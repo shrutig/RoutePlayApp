@@ -1,0 +1,46 @@
+@(route: Seq[Route])(content: String)
+
+@import helper._
+
+
+
+<html>
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <head>
+        <title>Route</title>
+    </head>
+    <body>
+    <style>
+        a.one:link {color:#ff0000;}
+        a.one:visited {color:#0000ff;}
+        a.one:hover {color:#ffcc00;}
+        </style>
+    <h1>Route Finder</h1>
+
+        <table class="pure-table pure-table-bordered">
+            <thead>
+                <tr>
+                    <th>Start</th>
+                    <th>Destination</th>
+                    <th>Mode</th>
+                    <th>Time in Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+            @route.map { r =>
+                <tr>
+                    <td>@r.start</td>
+                    <td>@r.dest</td>
+                    <td>@r.mode</td>
+                    <td>@r.timeHours</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    @content
+      <p>
+    <a a class="one" href="@routes.Application.ask()">Search for more possible routes</a></p>
+    </body>
+
+</html>
